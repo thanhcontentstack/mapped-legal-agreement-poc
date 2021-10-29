@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>{{ entry?.title }}</h2>
+      <h6>Last Updated: {{ entry?.updated_date | date: 'short'}} </h6>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <p class="callout" [innerHTML]='entry?.header_content'></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-4">
+      <h3>{{entry?.table_of_content_title}}</h3>
+      <ul *ngFor="let legalContent of legalContents">
+        <li><a href="#{{ legalContent.content_section_id }}">{{ legalContent.legal_content_title }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row mt-4" *ngFor="let legalContent of legalContents">
+    <div class="col-md-6" id="{{legalContent.content_section_id}}">
+      <p [innerHTML]='legalContent.non_legal_explanation'></p>
+    </div>
+    <div class="col-md-6">
+      <p [innerHTML]='legalContent.legal_content_title'></p>
+      <p [innerHTML]='legalContent.legal_explanation'></p>
+    </div>
+  </div>
+</div>
